@@ -149,8 +149,8 @@ public class Task implements Serializable  {
                      throw new IllegalArgumentException("A data de criação não pode ser nula.");
             }
 
-          if (dataConclusao == null) {
-                throw new IllegalArgumentException("A data de conclusão não pode ser nula.");
+          if (dataConclusao == null || dataConclusao.isBefore(dataCriacao)) {
+                throw new IllegalArgumentException("A data de conclusão não pode ser nula nem  invalida.");
             }
 
         // Verificar se o status é nulo

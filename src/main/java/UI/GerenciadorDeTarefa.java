@@ -352,7 +352,7 @@ public class GerenciadorDeTarefa extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Principal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Principal, javax.swing.GroupLayout.PREFERRED_SIZE, 786, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -515,7 +515,7 @@ public class GerenciadorDeTarefa extends javax.swing.JFrame {
 
                     manager.deleteTask(id); // Chama o método delete com o UUID
                 }
-            } catch (Exception e) {
+            } catch (HeadlessException e) {
                 JOptionPane.showMessageDialog(null, "Nenhuma linha selecionada. Clique na linha que deseja eliminar os dados. Erro: " + e);
             }
 
@@ -557,8 +557,8 @@ public class GerenciadorDeTarefa extends javax.swing.JFrame {
                 Object cellValue = Tarefas.getValueAt(selectedRow, 0);
                 if (cellValue instanceof UUID) {
                     id.setText(cellValue.toString());
-                } else if (cellValue instanceof String) {
-                    id.setText((String) cellValue);
+                } else if (cellValue instanceof String string) {
+                    id.setText(string);
                 } else {
                     id.setText(""); // Defina um valor padrão caso o tipo não seja esperado
                 }
@@ -622,7 +622,6 @@ public class GerenciadorDeTarefa extends javax.swing.JFrame {
                 try {
                     Thread.sleep(50);
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
                 }
                 
                 if (i == 100) {
