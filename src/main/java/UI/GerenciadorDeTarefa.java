@@ -410,6 +410,9 @@ public class GerenciadorDeTarefa extends javax.swing.JFrame {
 
     private void Nova_TarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Nova_TarefaActionPerformed
         // TODO add your handling code here:
+        Titulo.setText("");
+        Description.setText("");
+        Date_finish.setDate(new Date());
         Cadastrar.setVisible(true);
         Vizualizar.setVisible(false);
     }//GEN-LAST:event_Nova_TarefaActionPerformed
@@ -438,13 +441,13 @@ public class GerenciadorDeTarefa extends javax.swing.JFrame {
     private void ConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmarActionPerformed
        
         try {
-                        // Converte para Instant
+              // Converte para Instant
               Instant instant = Date_finish.getDate().toInstant();
               LocalDate localDate = instant.atZone(ZoneId.systemDefault()).toLocalDate();
 
               String statusSelecionado = Status.getSelectedItem().toString().toUpperCase();
-
-                if (Confirmar.getText().equalsIgnoreCase("Confirmar")) {
+              boolean validete = tasks.validation(Titulo.getText(), Description.getText(), LocalDate.now(), localDate, Task.TaskStatus.PENDENTE);
+                if (Confirmar.getText().equalsIgnoreCase("Confirmar") && validete == true) {
                     
                     tasks.setTitulo(Titulo.getText());
                     tasks.setDataCriacao(LocalDate.now());
@@ -453,7 +456,7 @@ public class GerenciadorDeTarefa extends javax.swing.JFrame {
                     tasks.setDescricao(Description.getText());
                     manager.addTask(tasks); // Adiciona a nova tarefa
                     
-                } else if(Confirmar.getText().equalsIgnoreCase("Actualizar")) {
+                } else if(Confirmar.getText().equalsIgnoreCase("Actualizar") && validete == true) {
                     
                     tasks.setId(UUID.fromString(alteracoes.ConvertUUID(id.getText())));
                     tasks.setTitulo(Titulo.getText());

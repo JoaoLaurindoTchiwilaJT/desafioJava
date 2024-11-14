@@ -2,7 +2,6 @@ package Repository;
 
 import Entity.Task;
 import java.awt.HeadlessException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import javax.persistence.EntityManager;
@@ -15,7 +14,7 @@ public class TaskManager {
     private EntityManagerFactory factory;
     private EntityManager manager;
     private List<Task> sql;
-    private ArrayList<String> valores = new ArrayList<>();
+  
 
     public TaskManager() { 
         try {
@@ -42,8 +41,7 @@ public class TaskManager {
     }
     
     public List<Task> updateTask(Task task){
-        System.out.println(task);
-            
+                  
           
         if (task != null) {
             
@@ -70,7 +68,7 @@ public class TaskManager {
             } else {
                 JOptionPane.showMessageDialog(null, "Task não encontrada!");
             }
-        }catch (Exception e) {
+        }catch (HeadlessException e) {
             JOptionPane.showMessageDialog(null, "Verifique se a conexão com o seu banco está sendo realizada");
         }
         return getListTask();
@@ -100,13 +98,6 @@ public class TaskManager {
         return sql;
     }
 
-    public ArrayList getValores() {
-        return valores;
-    }
-
-    public void AddValores(String valores) {
-        this.valores.add(valores);
-    }
     
     
 }

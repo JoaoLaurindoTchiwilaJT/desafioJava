@@ -26,8 +26,7 @@ public class Processo {
         
         return formattedUUID;
     }
-    
-    
+       
     public List<String> StatusCombo(String statu){
         this.status.clear();
        
@@ -37,14 +36,19 @@ public class Processo {
                 this.status.add(statu);
                 this.status.add("EM_PROGRESSO");
                 this.status.add("CONCLUIDA");
+                
             } else if(statu.equalsIgnoreCase("EM_PROGRESSO")) {
+                
                 this.status.add(statu);
                 this.status.add("PENDENTE");
                 this.status.add("CONCLUIDA");
+                
             } else if(statu.equalsIgnoreCase("CONCLUIDA")){
+                
                 this.status.add(statu);
                 this.status.add("EM_PROGRESSO");
                 this.status.add("PENDENTE");
+                
             }
 
 
@@ -54,4 +58,5 @@ public class Processo {
         
         return  status;
     }
+    
 }

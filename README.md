@@ -94,29 +94,44 @@ Explicação sobre como usar o projeto e exemplos de comandos.
 
 ### Configuração do arquivo `persistence.xml`
 
-Configure o arquivo `persistence.xml` para definir a conexão com o banco de dados MySQL.
+Configure o arquivo `persistence.xml` para definir a conexão com o banco de dados em memoria H2.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
     http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
-    version="2.1">
-    
-    <persistence-unit name="desafio" transaction-type="RESOURCE_LOCAL">
-        <properties>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/desafio?useSSL=false&amp;serverTimezone=UTC&amp;characterEncoding=UTF-8" />
-            <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
-            <property name="javax.persistence.jdbc.user" value="root" />
-            <property name="javax.persistence.jdbc.password" value="" />
-            <property name="hibernate.hbm2ddl.auto" value="update" />
-            <property name="hibernate.show_sql" value="true" />
-            <property name="hibernate.format_sql" value="true" />
-            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect" />
-        </properties>
-    </persistence-unit>
+	version="2.1">
+
+	<persistence-unit name="desafio" transaction-type="RESOURCE_LOCAL">
+		<properties>
+			<!-- URL do banco de dados H2 em memória -->
+			<property name="javax.persistence.jdbc.url" 
+				value="jdbc:h2:mem:desafio;DB_CLOSE_DELAY=-1" />
+				
+			<!-- Configuração do driver para H2 -->
+			<property name="javax.persistence.jdbc.driver" 
+				value="org.h2.Driver" />
+
+			<!-- Usuário e senha padrão para H2 em memória -->
+			<property name="javax.persistence.jdbc.user" value="sa" />
+			<property name="javax.persistence.jdbc.password" value="" />
+
+			<!-- Configuração do Hibernate para atualizar o banco -->
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			
+			<!-- Dialeto para H2 -->
+			<property name="hibernate.dialect" 
+				value="org.hibernate.dialect.H2Dialect" />
+			
+			<!-- Habilita logs do SQL para depuração -->
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+		</properties>
+	</persistence-unit>
 </persistence>
+
 ```
 
 ## Estrutura de Pastas

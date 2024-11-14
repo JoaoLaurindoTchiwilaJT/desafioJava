@@ -4,6 +4,8 @@
  */
 package Entity;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.UUID;
@@ -35,10 +37,18 @@ public class Task implements Serializable  {
     @Type(type = "org.hibernate.type.UUIDCharType")
     @Column(name = "id", nullable = false, columnDefinition = "VARCHAR(36)")
     private UUID id;
+    
+    @NotBlank(message = "O título não pode ser vazio.") 
     private String titulo;
+    
+    @NotBlank(message = "A descrição não pode ser vazia.") 
     @Column(name = "descricao",  nullable = false, columnDefinition = "TEXT")
     private String descricao;
+    
+    @NotNull(message = "A data de criação não pode ser nula.")
     private LocalDate dataCriacao;
+   
+    @NotNull(message = "A data de conclusão não pode ser nula.")
     private LocalDate dataConclusao;
     
     @Enumerated(EnumType.STRING) // Isso indica que o valor será armazenado como String
@@ -116,6 +126,41 @@ public class Task implements Serializable  {
         public static TaskStatus valueOf(Object selectedItem) {
             throw new UnsupportedOperationException("Not supported yet."); 
         }
+    }
+    
+    public boolean validation(String titulo, String descricao, LocalDate dataCriacao, LocalDate dataConclusao, TaskStatus status){
+        // Verificar se o título é nulo ou vazio
+            if (titulo == null || titulo.isBlank()) {
+
+                throw new IllegalArgumentException("O título não pode ser vazio ou nulo.");
+            }
+
+            // Verificar se a descrição é nula ou vazia
+            if (descricao == null || descricao.isBlank()) {
+
+
+                throw new IllegalArgumentException("A descrição não pode ser vazia ou nula.");
+            }
+
+
+        // Verificar se as datas são nulas
+            if (dataCriacao == null) {
+
+                     throw new IllegalArgumentException("A data de criação não pode ser nula.");
+            }
+
+          if (dataConclusao == null) {
+                throw new IllegalArgumentException("A data de conclusão não pode ser nula.");
+            }
+
+        // Verificar se o status é nulo
+            if (status == null) {
+
+
+                 throw new IllegalArgumentException("O status não pode ser nulo.");
+            }
+            
+        return true;
     }
 
 }
