@@ -37,11 +37,22 @@ Lista de funcionalidades principais do projeto:
 
 Aqui estão algumas capturas de tela do projeto:
 
-![Tela Principal](./screenshots/Captura de Tela (9).png)
-*Figura 1: Tela principal de visualização de tarefas*
+*Figura 1: Tela de Inicio*
 
-![Tela de Cadastro](./screenshots/tela_cadastro.png)
-*Figura 2: Tela de cadastro de nova tarefa*
+![Captura de Tela (9)](https://github.com/user-attachments/assets/c261c768-31d6-4930-900e-737ed44cfe07)
+
+*Figura 2: Tela de vizualização de Tasks*
+
+![Captura de Tela (10)](https://github.com/user-attachments/assets/08ce1c0b-209c-426c-ab89-aea98e69039f)
+
+*Figura 3: Tela de cadastro de nova Task*
+
+![Captura de Tela (14)](https://github.com/user-attachments/assets/780a8de1-998f-4ef2-9c27-376e4d619d38)
+
+*Figura 4: Tela de actualização de Task*
+
+![Captura de Tela (12)](https://github.com/user-attachments/assets/34114351-8069-46b9-811c-f2b650aaa0e6)
+
 
 ## Instalação
 
