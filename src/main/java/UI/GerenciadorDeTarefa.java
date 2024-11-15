@@ -40,7 +40,7 @@ public class GerenciadorDeTarefa extends javax.swing.JFrame {
     }
     
         Task tasks = new Task();
-        TaskManager manager = new TaskManager();
+        TaskManager manager = TaskManager.getInstance();
         List<Task> listaDeTarefas = manager.getListTask();
         DefaultTableModel tarefa ; 
         int eixoX=0, eixoY=0;

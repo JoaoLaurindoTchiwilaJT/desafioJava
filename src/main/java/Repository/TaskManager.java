@@ -14,7 +14,14 @@ public class TaskManager {
     private EntityManagerFactory factory;
     private EntityManager manager;
     private List<Task> sql;
+    private static  TaskManager Instance;
   
+    public static synchronized TaskManager getInstance() {
+        if (Instance == null) {
+            Instance = new TaskManager();
+        }
+        return Instance;
+    }
 
     public TaskManager() { 
         try {
@@ -76,7 +83,7 @@ public class TaskManager {
     
     public List<Task> getListTask(){
         try {
-             sql = manager.createQuery("SELECT t FROM Task t", Task.class).getResultList();
+             sql = manager.createQuery("SELECT t FROM Task t order by t.dataCriacao DESC", Task.class).getResultList();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Verifique se a conexão com o seu banco está sendo realizada");
         }

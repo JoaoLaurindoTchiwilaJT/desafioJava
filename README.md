@@ -184,6 +184,9 @@ As principais dependências do projeto estão listadas no `pom.xml`:
 - **MySQL Connector** para integração com o banco de dados MySQL.
 - **Swing** para a interface gráfica do usuário.
 
+## Designer Pattern
+
+- **Singleton** : Garante a existencia de apenas uma instância de uma classe, mantendo um ponto global de acesso ao seu objecto
 ## Autores
 
 - João Laurindo Tchiwila (Tchiwila) - Desenvolvedor do projeto.
