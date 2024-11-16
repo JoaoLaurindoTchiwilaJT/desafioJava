@@ -6,6 +6,9 @@
 	version="2.1">
 
 	<persistence-unit name="desafio" transaction-type="RESOURCE_LOCAL">
+        <!-- Provedor JPA (Hibernate) -->
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
 		<properties>
 			<!-- URL do banco de dados H2 em memória -->
 			<property name="javax.persistence.jdbc.url" 

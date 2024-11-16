@@ -8,7 +8,6 @@ import Entity.Task;
 import jakarta.validation.ConstraintViolationException;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Objects;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -82,7 +81,6 @@ public class TaskManagerTest {
     @Test
     @DisplayName("Não deve adicionar uma task com um campo vazio")
     public void testNotAddTask() {
-            boolean validate = false ;
             task.setTitulo(""); // Deixe o campo 'titulo' vazio
             task.setDescricao("Não será facil mais iremos conseguir");
             task.setDataCriacao(LocalDate.MIN);

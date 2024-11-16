@@ -197,6 +197,11 @@ public class GerenciadorDeTarefa extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 102, 255));
         jLabel2.setText("Status");
 
+        Pesquisando.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PesquisandoActionPerformed(evt);
+            }
+        });
         Pesquisando.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 PesquisandoKeyReleased(evt);
@@ -471,7 +476,7 @@ public class GerenciadorDeTarefa extends javax.swing.JFrame {
                 Cadastrar.setVisible(false);
 
                 // Limpar a tabela se necessário (opcional)
-                tarefa.setNumRows(0);
+              
                 listaDeTarefas = manager.getListTask();
                 // Recarregar os dados na tabela chamando o método responsável
                 PreencherTabela();
@@ -601,7 +606,7 @@ public class GerenciadorDeTarefa extends javax.swing.JFrame {
             
                  Task.TaskStatus status = Task.TaskStatus.valueOf(pesquisar_status.getSelectedItem().toString());
                 // Limpar a tabela se necessário (opcional)
-                tarefa.setNumRows(0);
+               
                 listaDeTarefas = manager.getListTaskForStatus(status);
                 // Recarregar os dados na tabela chamando o método responsável
                 PreencherTabela();
@@ -613,6 +618,10 @@ public class GerenciadorDeTarefa extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_pesquisar_statusActionPerformed
+
+    private void PesquisandoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PesquisandoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PesquisandoActionPerformed
 
     private void Progress(){
           new Thread(() -> {
@@ -642,8 +651,7 @@ public class GerenciadorDeTarefa extends javax.swing.JFrame {
              
                     // Iterar sobre a lista de tarefas e adicionar os dados na tabela
         try {
-            tarefa.setNumRows(0);
-                    
+             
              for (Task task : listaDeTarefas) {
                          // Criar um array com os dados da tarefa
                          
